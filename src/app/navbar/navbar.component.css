@@ -3,6 +3,38 @@
   background-color: #1e94d2;
 }
 
-.navbar-toggle {
+.navbar-menu {
+  position: fixed;/* Fixa o elemento na pág. independente de scroll, ele aprecerá fixo e por cima do conteúdo */
+  top: 0; /* posiciona o menu no topo da view*/
+  bottom: 0;/* cola o elemento em baixo da view */
+  right: 0; /* cola o menu no lado direito da view */
+  width: 210px;
+  margin: 0; /* remove a margem do menu */
+  padding: 0; /* remove qualquer margem interna pre-existente */
+  z-index: 9998; /* define a prioridade de cada elemento na exibição, fixando o elemento à frente de todos os demais na página  */
+
+  background-color: #3a3633;
+  list-style: none;
+}
+
+.navbar-usuario {
+  padding: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #525151;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+}
+
+.navbar-menuitem {
+  padding: 15px;
+}
+
+.navbar-menuitem a {
+  color: #c0bbb7;
+  text-decoration: none;
+}
+
+.navbar-menuitem a:hover {
   color: #fff;
 }
