@@ -1,5 +1,5 @@
 <div class="container">
-  <form>
+  <form #lancamentoCadastroForm="ngForm" autocomplete="off">
     <div class="ui-g">
       <div class="ui-g-12">
         <h1>Novo Lançamento</h1>
@@ -13,7 +13,9 @@
         <label> Vencimento </label>
         <p-calendar dateFormat="dd/mm/yy" [inline]="false"
           [readonlyInput]="false"
-          [showIcon]="false"></p-calendar>
+          [showIcon]="false" name="vencimento" ngModel #vencimento="ngModel" required></p-calendar>
+
+        <app-message [control]="vencimento" error="required" text="Informe uma data de vencimento"></app-message>
       </div>
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label> {{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }} </label>
@@ -34,17 +36,17 @@
       </div>
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label> Valor </label>
-        <input pInputText type="text" placeholder="0,00" currencyMask name="valor" ngModel
-        [options]="{prefix: '', thousands: '.', decimal: ',', allowNegative:false}">
+        <input pInputText type="text" placeholder="0,00" currencyMask name="valor" ngModel #valor="ngModel"
+        [options]="{prefix: '', thousands: '.', decimal: ',', allowNegative:false}" required>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label> Categoria {{ categoria.value }}</label>
-        <p-dropdown [options]="categorias" [autoWidth]="false" placeholder="Selecione" #categoria></p-dropdown>
+        <p-dropdown [options]="categorias" [autoWidth]="false" placeholder="Selecione" #categoria required></p-dropdown>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label> Pessoa {{ pessoa.value }} </label>
-        <p-dropdown [options]="pessoas" [autoWidth]="false" placeholder="Selecione"[filter]="true" #pessoa></p-dropdown>
+        <p-dropdown [options]="pessoas" [autoWidth]="false" placeholder="Selecione"[filter]="true" #pessoa required></p-dropdown>
       </div>
 
       <div class="ui-g-12 ui-fluid">
@@ -53,12 +55,12 @@
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar"></button>
+        <button pButton type="submit" label="Salvar" [disabled]="!lancamentoCadastroForm.valid"></button>
+        <!-- todo: desabilitar o botão em caso de form invalido -->
         <button pButton type="button" label="Novo" class="ui-button-info"></button>
         <a href="javascript:;">Voltar para a pesquisa</a>
       </div>
 
     </div>
-
   </form>
 </div>
