@@ -24,14 +24,13 @@
         <label> Descrição </label>
         <input pInputText type="text" name="descricao" ngModel
           #descricao="ngModel" required minlength="5">
-        <small *ngIf="descricao.hasError('required') && descricao.dirty"
-          class="ui-message ui-messages-error">
-          Informe uma descrição
-        </small>
-        <small *ngIf="descricao.hasError('minlength') && descricao.dirty"
-          class="ui-message ui-messages-error">
-          O campo requer uma descrição de no minimo {{ descricao.errors.minlength.requiredLength }} caracteres.
-        </small>
+
+          <app-message [control]="descricao" error="required"
+           text="Informe uma descrição"></app-message>
+          <app-message [control]="descricao" error="minlength"
+           text="O campo requer uma descrição de no minimo
+           {{ descricao.errors?.minlength?.requiredLength }}
+           caracteres."></app-message>
       </div>
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label> Valor </label>
