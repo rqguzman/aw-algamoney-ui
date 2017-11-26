@@ -15,7 +15,7 @@
           [readonlyInput]="false"
           [showIcon]="false" name="vencimento" ngModel #vencimento="ngModel" required></p-calendar>
 
-        <app-message [control]="vencimento" error="required" text="Informe uma data de vencimento"></app-message>
+        <!-- <app-message [control]="vencimento" error="required" text="Informe uma data de vencimento"></app-message> -->
       </div>
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label> {{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }} </label>
@@ -27,12 +27,12 @@
         <input pInputText type="text" name="descricao" ngModel
           #descricao="ngModel" required minlength="5">
 
-          <app-message [control]="descricao" error="required"
+          <!-- <app-message [control]="descricao" error="required"
            text="Informe uma descrição"></app-message>
           <app-message [control]="descricao" error="minlength"
            text="O campo requer uma descrição de no minimo
            {{ descricao.errors?.minlength?.requiredLength }}
-           caracteres."></app-message>
+           caracteres."></app-message> -->
       </div>
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label> Valor </label>
@@ -56,7 +56,7 @@
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar" [disabled]="!lancamentoCadastroForm.valid"></button>
-        <!-- todo: desabilitar o botão em caso de form invalido -->
+
         <button pButton type="button" label="Novo" class="ui-button-info"></button>
         <a href="javascript:;">Voltar para a pesquisa</a>
       </div>
