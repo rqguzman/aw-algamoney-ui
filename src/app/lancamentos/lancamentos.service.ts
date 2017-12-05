@@ -1,5 +1,10 @@
-import { Headers, Http } from '@angular/http';
+import { any } from 'codelyzer/util/function';
+import { Headers, Http, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
+
+export interface LancamentoFiltro {
+  descricao: string;
+}
 
 @Injectable()
 export class LancamentosService {
@@ -8,11 +13,17 @@ export class LancamentosService {
 
   constructor(private http: Http) { }
 
-  pesquisar(): Promise<any> {
+  pesquisar(filtro: LancamentoFiltro): Promise<any> {
+    const params = new URLSearchParams();
     const cabecalhos = new Headers();
     cabecalhos.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
-    return this.http.get(`${this.lancamentosUrl}?resumo`, { headers: cabecalhos })
+    if (filtro.descricao) {
+      params.set('descricao', filtro.descricao);
+    }
+
+    return this.http.get(`${this.lancamentosUrl}?resumo`,
+      { headers: cabecalhos, search: params })
       .toPromise()
       .then(response => response.json().content);
   }
