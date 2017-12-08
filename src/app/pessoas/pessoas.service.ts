@@ -41,4 +41,13 @@ export class PessoasService {
         return resultados;
       });
   }
+
+  listarTodas (): Promise<any> {
+    const cabecalhos = new Headers();
+    cabecalhos.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return this.http.get(`${this.pessoasUrl}`, { headers: cabecalhos })
+      .toPromise()
+      .then(response => response.json().content);
+  }
 }
