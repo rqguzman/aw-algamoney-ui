@@ -56,4 +56,12 @@ export class LancamentosService {
       });
   }
 
+  excluir(codigo: number): Promise<void> {
+    const cabecalhos = new Headers();
+    cabecalhos.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return this.http.delete(`${this.lancamentosUrl}/${codigo}`, { headers: cabecalhos })
+      .toPromise()
+      .then(() => null);
+  }
 }
