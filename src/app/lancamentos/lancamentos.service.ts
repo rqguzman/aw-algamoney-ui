@@ -1,4 +1,3 @@
-import { any } from 'codelyzer/util/function';
 import { Headers, Http, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
 
