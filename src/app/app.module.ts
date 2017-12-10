@@ -3,6 +3,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { ToastyModule } from 'ng2-toasty';
+
 import { AppComponent } from './app.component';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { LancamentosService } from './lancamentos/lancamentos.service';
@@ -18,6 +20,8 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
+
+    ToastyModule,
 
     LancamentosModule,
     PessoasModule,
