@@ -21,7 +21,7 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     HttpModule,
 
-    ToastyModule,
+    ToastyModule.forRoot(),
 
     LancamentosModule,
     PessoasModule,
