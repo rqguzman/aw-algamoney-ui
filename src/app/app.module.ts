@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { ToastyModule } from 'ng2-toasty';
+import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 
 import { AppComponent } from './app.component';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
@@ -22,6 +24,7 @@ import { CoreModule } from './core/core.module';
     HttpModule,
 
     ToastyModule.forRoot(),
+    ConfirmDialogModule,
 
     LancamentosModule,
     PessoasModule,
@@ -29,7 +32,8 @@ import { CoreModule } from './core/core.module';
   ],
   providers: [
     LancamentosService,
-    PessoasService
+    PessoasService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })
