@@ -50,4 +50,13 @@ export class PessoasService {
       .toPromise()
       .then(response => response.json().content);
   }
+
+  excluir(codigo: number): Promise<void> {
+    const cabecalhos = new Headers();
+    cabecalhos.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return this.http.delete(`${this.pessoasUrl}/${codigo}`, { headers: cabecalhos })
+      .toPromise()
+      .then(() => null);
+  }
 }
