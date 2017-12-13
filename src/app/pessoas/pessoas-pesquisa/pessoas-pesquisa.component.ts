@@ -58,7 +58,7 @@ export class PessoasPesquisaComponent {
       .catch(erro => this.errorHandlerService.handle(erro));
   }
 
-  alterarStatus(pessoa: any) {
+  alterarStatus(pessoa: any): void {
     const novoStatus = !pessoa.ativo;
 
     this.pessoasService.alterarStatus(pessoa.codigo, novoStatus)
