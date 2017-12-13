@@ -51,10 +51,24 @@ export class PessoasPesquisaComponent {
 
   excluir(pessoa: any) {
     this.pessoasService.excluir(pessoa.codigo)
-    .then(() => {
-      this.pesquisar(this.filtro.pagina);
-      this.toastyService.success('Pessoa removida com sucesso!');
-    })
-    .catch(erro => this.errorHandlerService.handle(erro));
+      .then(() => {
+        this.pesquisar(this.filtro.pagina);
+        this.toastyService.success('Pessoa removida com sucesso!');
+      })
+      .catch(erro => this.errorHandlerService.handle(erro));
+  }
+
+  alterarStatus(pessoa: any) {
+    const novoStatus = !pessoa.ativo;
+
+    this.pessoasService.alterarStatus(pessoa.codigo, novoStatus)
+      .then(() => {
+        const acao = novoStatus ? 'ativada' : 'desativada';
+
+        pessoa.ativo = novoStatus;
+
+        this.toastyService.success(`Pessoa ${acao} com sucesso!`);
+      })
+      .catch(erro => this.errorHandlerService.handle(erro));
   }
 }
