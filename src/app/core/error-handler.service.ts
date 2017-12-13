@@ -20,12 +20,18 @@ export class ErrorHandlerService {
                       && errorResponse.status >= 400
                       && errorResponse.status <= 499) {
 
+      let errors;
+
       msg = 'Ocorreu um erro ao processar a sua solicitação';
 
       try {
-        msg = errorResponse.json()[0].mensagemUsuario;
+        errors = errorResponse.json();
+
+        msg = errors[0].mensagemUsuario;
       } catch (e) {
+
         console.error('Ocorreu um erro.', errorResponse);
+
       }
 
     } else {
