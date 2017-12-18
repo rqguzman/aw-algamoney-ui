@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-pagina-nao-encontrada',
@@ -16,6 +17,7 @@ import { Component, OnInit } from '@angular/core';
         <li>Se você digitou um endereço, verifique se a grafia está correta.</li>
         <li>Retorne a <a routerLink="/lancamentos">página inicial</a>.</li>
         <li>Se você seguiu um link, ele provavelmente está quebrado.</li>
+        <li>Se quiser retornar para sua página de origem, <a (click)="voltarParaAPaginaAnterior()">clique aqui.</a></li>
       </ul>
     </div>
   `,
@@ -23,9 +25,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginaNaoEncontradaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private location: Location) { }
 
   ngOnInit() {
+  }
+
+  voltarParaAPaginaAnterior() {
+    this.location.back();
   }
 
 }
