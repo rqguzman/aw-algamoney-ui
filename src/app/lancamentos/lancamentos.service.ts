@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Lancamento } from './../core/model';
 
+import 'rxjs/add/operator/toPromise';
 import * as moment from 'moment';
 import { forEach } from '@angular/router/src/utils/collection';
 
@@ -114,11 +115,13 @@ export class LancamentosService {
   }
 
   private converterStringsParaDate(lancamentos: Lancamento[]) {
-    for (const l of lancamentos){
-      l.dataVencimento = moment(l.dataVencimento, 'YYYY-MM-DD').toDate();
+    for (const lancamento of lancamentos) {
+      lancamento.dataVencimento = moment(lancamento.dataVencimento,
+        'YYYY-MM-DD').toDate();
 
-      if (l.dataPagamento) {
-        l.dataPagamento = moment(l.dataPagamento, 'YYYY-MM-DD').toDate();
+      if (lancamento.dataPagamento) {
+        lancamento.dataPagamento = moment(lancamento.dataPagamento,
+          'YYYY-MM-DD').toDate();
       }// end if
     }// end for
   }
