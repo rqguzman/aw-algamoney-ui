@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 // import { LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { ConfirmationService } from 'primeng/components/common/api';
 import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
@@ -34,7 +35,8 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
     CategoriaService,
     ErrorHandlerService,
 
-    ConfirmationService
+    ConfirmationService,
+    Title
     // { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })
