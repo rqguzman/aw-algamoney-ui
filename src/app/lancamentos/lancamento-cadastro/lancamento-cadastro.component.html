@@ -25,7 +25,7 @@
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label> {{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }} </label>
-        <p-calendar dateFormat="dd/mm/yy" name="vencimento"
+        <p-calendar dateFormat="dd/mm/yy" name="dataPagamento"
           [(ngModel)]="lancamento.dataPagamento"></p-calendar>
       </div>
 
