@@ -8,10 +8,11 @@ import { ConfirmationService } from 'primeng/components/common/api';
 import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
 import { ToastyModule } from 'ng2-toasty';
 
-import { ErrorHandlerService } from './error-handler.service';
-import { PessoasService } from './../pessoas/pessoas.service';
 import { LancamentosService } from './../lancamentos/lancamentos.service';
+import { PessoasService } from './../pessoas/pessoas.service';
 import { CategoriaService } from './../categorias/categoria.service';
+import { ErrorHandlerService } from './error-handler.service';
+import { AuthService } from './../seguranca/auth.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 
@@ -34,6 +35,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
     PessoasService,
     CategoriaService,
     ErrorHandlerService,
+    AuthService,
 
     ConfirmationService,
     Title

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastyService } from 'ng2-toasty';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
+import { AuthService } from './../auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -15,13 +16,16 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private toastyService: ToastyService,
     private errorHandlerService: ErrorHandlerService,
-    private titleService: Title
+    private titleService: Title,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.titleService.setTitle('Login');
   }
 
-  login(usuario: string, senha: string) {}
+  login(usuario: string, senha: string) {
+    this.authService.login(usuario, senha);
+  }
 
 }

@@ -1,6 +1,6 @@
 <div class="container" style="max-width:400px; margin:auto">
 
-  <form #loginForm="ngForm" autocomplete="off" (ngSubmit)="login(loginForm)">
+  <form #loginForm="ngForm" autocomplete="off">
 
     <div class="ui-g ui-fluid">
 
@@ -9,12 +9,12 @@
       </div>
 
       <div class="ui-g-12">
-        <input pInputText type="text" name="usuario" placeholder="E-mail"
+        <input pInputText type="email" name="usuario" placeholder="E-mail"
           ngModel required #usuario>
       </div>
 
       <div class="ui-g-12">
-        <input pInputText type="text" name="senha" placeholder="Senha"
+        <input pInputText type="password" name="senha" placeholder="Senha"
         ngModel required #senha>
       </div>
 
