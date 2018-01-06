@@ -1,6 +1,6 @@
 <div class="container" style="max-width:400px; margin:auto">
-
-  {{ authService.jwtPayload | json }}
+  <!-- Debug Cap-06_Aula19 -->
+  <!-- {{ authService.jwtPayload | json }} -->
 
   <form #loginForm="ngForm" autocomplete="off">
 
@@ -22,7 +22,7 @@
 
       <div class="ui-g-12">
           <button pButton type="submit" label="Login" [disabled]="!loginForm.valid"
-          (click)="login(usuario.value, senha.value)"></button>
+          (click)="login(usuario.value, senha.value); usuario.value=''; senha.value=''"></button>
       </div>
 
     </div>

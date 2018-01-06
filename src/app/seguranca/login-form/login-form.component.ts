@@ -1,7 +1,7 @@
+import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
-
-import { ToastyService } from 'ng2-toasty';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { AuthService } from './../auth.service';
@@ -14,8 +14,8 @@ import { AuthService } from './../auth.service';
 export class LoginFormComponent implements OnInit {
 
   constructor(
-    private toastyService: ToastyService,
     private errorHandlerService: ErrorHandlerService,
+    private router: Router,
     private titleService: Title,
     private authService: AuthService
   ) { }
@@ -25,7 +25,14 @@ export class LoginFormComponent implements OnInit {
   }
 
   login(usuario: string, senha: string) {
-    this.authService.login(usuario, senha);
+    this.authService.login(usuario, senha)
+      .then( () => {
+        this.router.navigate(['/lancamentos']);
+      })
+      .catch( erro => {
+          this.errorHandlerService.handle(erro);
+        }
+      );
   }
 
 }
