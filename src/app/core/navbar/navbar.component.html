@@ -10,7 +10,7 @@
   </div>
   <!-- Aqui a propriedade hidden condiciona se exibindoMenu for false, oculta o menu  -->
   <ul class="navbar-menu" [hidden]="!exibindoMenu">
-    <li class="navbar-usuario">Usuário logado</li>
+    <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>
     <li class="navbar-menuitem" routerLinkActive="ativo">
       <a routerLink="/lancamentos">Lançamentos</a>
     </li>
