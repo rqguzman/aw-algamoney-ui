@@ -12,6 +12,7 @@ import { SharedModule } from '../shared/shared.module';
 import { SegurancaRoutingModule } from './seguranca-routing.module';
 import { AuthService } from './auth.service';
 import { MoneyHttpService } from './money-http.service';
+import { AuthGuard } from './auth.guard';
 
 export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
 
@@ -41,7 +42,8 @@ export function authHttpServiceFactory(auth: AuthService, http: Http, options: R
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
       deps: [AuthService, Http, RequestOptions]
-    }
+    },
+    AuthGuard
   ]
 })
 export class SegurancaModule { }

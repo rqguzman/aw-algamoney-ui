@@ -17,6 +17,7 @@ import { ErrorHandlerService } from './error-handler.service';
 import { AuthService } from './../seguranca/auth.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { AcessoNaoAutorizadoComponent } from './acesso-nao-autorizado.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
     ToastyModule.forRoot(),
     ConfirmDialogModule
   ],
-  declarations: [NavbarComponent, PaginaNaoEncontradaComponent],
+  declarations: [NavbarComponent, PaginaNaoEncontradaComponent, AcessoNaoAutorizadoComponent],
   exports: [
     NavbarComponent,
     ToastyModule,
