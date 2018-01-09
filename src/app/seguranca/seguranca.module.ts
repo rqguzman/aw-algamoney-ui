@@ -10,8 +10,10 @@ import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SharedModule } from '../shared/shared.module';
 import { SegurancaRoutingModule } from './seguranca-routing.module';
+import { AuthService } from './auth.service';
+import { MoneyHttpService } from './money-http.service';
 
-export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
 
   const config = new AuthConfig({
     globalHeaders: [
@@ -19,7 +21,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ]
   });
 
-  return new AuthHttp(config, http, options);
+  return new MoneyHttpService(auth, config, http, options);
 }
 
 @NgModule({
@@ -38,7 +40,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
-      deps: [Http, RequestOptions]
+      deps: [AuthService, Http, RequestOptions]
     }
   ]
 })
