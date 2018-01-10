@@ -6,6 +6,10 @@ import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from './auth.service';
 
+export class NotAuthenticatedError {
+
+}
+
 @Injectable()
 export class MoneyHttpService extends AuthHttp {
 
@@ -51,6 +55,17 @@ export class MoneyHttpService extends AuthHttp {
 
       const chamadaNovoAccessToken = this.auth.obterNovoAccessToken()
         .then(() => {
+
+            if (this.auth.isAccessTokenInvalido()) {
+              throw new NotAuthenticatedError();
+            }
+          /* Ao obter um novo AT, antes de chamar a função que está sendo interceptada,
+          Independentemente de obter sucesso ou não na obtenção de um novo AT,
+          primeiramente cairemos no .then().
+          Então, verificamos antes se o AT está válido ou não.
+          Se o RT estiver expirado, o AT NÃO estará válido e lançamos então o nosso erro
+          customisado: NotAuthenticatedError, com o instanceOf FUNCIONARÁ.
+          */
           return fn().toPromise();
         });
 
