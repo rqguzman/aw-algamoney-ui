@@ -10,15 +10,15 @@
   </div>
   <!-- Aqui a propriedade hidden condiciona se exibindoMenu for false, oculta o menu  -->
   <ul class="navbar-menu" [hidden]="!exibindoMenu">
-    <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>
-    <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')">
+    <li class="navbar-usuario">{{ authService.jwtPayload?.nome }}</li>
+    <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="authService.temPermissao('ROLE_PESQUISAR_LANCAMENTO')">
       <a routerLink="/lancamentos">Lançamentos</a>
     </li>
-    <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_PESSOA')">
+    <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="authService.temPermissao('ROLE_PESQUISAR_PESSOA')">
       <a routerLink="/pessoas">Pessoas</a>
     </li>
     <li class="navbar-menuitem">
-      <a href="javascript:;">Logout</a>
+      <a href="javascript:;" (click)="logout()">Logout</a>
     </li>
   </ul>
 
